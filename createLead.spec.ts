@@ -1,0 +1,28 @@
+import {test, expect} from "@playwright/test";
+
+test("To Open the Create a Lead application",async({page})=>
+{
+    await page.goto("http://leaftaps.com/opentaps/control/main")
+    await page.waitForTimeout(2000)
+    await page.locator(".inputLogin").first().fill("Demosalesmanager")
+    await page.locator(".inputLogin").last().fill("crmsfa")
+    await page.locator(".decorativeSubmit").click()
+    await page.locator(".crmsfa").click()
+    await page.waitForTimeout(2000)
+    await page.locator("text='Leads'").click()
+    await page.waitForTimeout(2000)
+    await page.locator("text='Create Lead'").first().click()
+    await page.locator("#createLeadForm_companyName").fill("Test leaf")
+    await page.locator("[id='createLeadForm_firstName']").fill("Harini")
+    await page.locator("#createLeadForm_lastName").fill("Priya")
+    await page .locator("[name='personalTitle']").fill("MS.")
+    await page.locator("#createLeadForm_generalProfTitle").fill("WORK")
+    await page.locator("#createLeadForm_annualRevenue").fill("500000")
+    await page.locator("[name='departmentName']").fill("Testing")
+    await page.locator("#createLeadForm_primaryPhoneNumber").fill("1234567890")
+    await page.waitForTimeout(5000)
+    await page.locator(".smallSubmit").click()
+    await page.waitForTimeout(3000)
+    console.log("The page title is :" +await page.title())
+    console.log("The Page URL is " +page.url())
+})
